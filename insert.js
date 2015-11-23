@@ -16,7 +16,7 @@ http.createServer(function(request, response) {
             db.close();
         } else {
             //HURRAY!! We are connected. :)
-            response.write('Connection established to' + url +"\n");
+            response.write('Connection established to ' + url +"\n");
 
             // do some work here with the database.
             var collection = db.collection("users");
@@ -26,7 +26,7 @@ http.createServer(function(request, response) {
 
             collection.insert([user1, user2, user3], function(err, result) {
                 if (err) {
-                    response.write('Insert failed ' + err + "\n");
+                    response.write('Insert failed: ' + err + "\n");
                 } else {
                     console.log(result);
                     response.write('Inserted ' + result.insertedCount +' documents ok. +"\n"');
@@ -35,9 +35,7 @@ http.createServer(function(request, response) {
                 db.close();
                 response.end('Finished, Connection closed \n');
                 //remove any other db.close or response.end statement below this line
-        });
-            //Done Close connection
-            db.close();
+            });
         }
         response.end('Finished, Connection closed \n');
     });
