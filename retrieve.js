@@ -20,7 +20,7 @@ http.createServer(function(request, response) {
 
             // do some work here with the database.
             var collection = db.collection("users");
-            var results = collection.find({age: "{$lte:100}"});
+            var results = collection.find({age: "{$lte:30}"});
 
             results.each(function (err, result) {
                 if (err) {
