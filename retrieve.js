@@ -24,14 +24,15 @@ http.createServer(function(request, response) {
 
             results.each(function (err, result) {
                 if (err) {
-                    response.write("Error retrieving: " + err + "\n");
-                } else {
-                    response.write("Fetched " + result.name + " : " + result.age + " y/o, roles " + result.roles.toString() + "\n");
-                }
-
-                if (result == null) {
-                    response.end("End retrieve\n");
+                    response.end("Error retrieving: " + err + "\n");
                     db.close();
+                } else {
+                    if (result == null) {
+                        response.end("End retrieve\n");
+                        db.close();
+                    } else {
+                        response.write("Fetched " + result.name + " : " + result.age + " y/o, roles " + result.roles.toString() + "\n");
+                    }
                 }
             });
         }
