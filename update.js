@@ -32,12 +32,8 @@ http.createServer(function(request, response) {
 
                 db.close();
                 response.end("End of update");
-            })
-
-            //Done Close connection
-            db.close();
+            });
         }
-        response.end('Finished, Connection closed \n');
     });
 
 }).listen(port);
