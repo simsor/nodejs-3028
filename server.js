@@ -1,1 +1,1 @@
-require("./update");
+require("./twittertest");
