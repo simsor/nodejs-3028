@@ -14,7 +14,7 @@ http.createServer(function(request, response) {
 
     client.get("search/tweets", {q: ""}, function (error, tweets) {
         if (error) {
-            response.end("An error happened while trying to fetch tweets: " +error);
+            throw error;
         } else {
             console.log(tweets);
             response.end("Looks like it worked");
