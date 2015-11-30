@@ -1,4 +1,5 @@
 var http = require("http");
+var url = require("url");
 var port = process.env.PORT || 1337;
 var Twitter = require("twitter");
 
@@ -12,8 +13,10 @@ var client = new Twitter({
 http.createServer(function(request, response) {
     response.writeHead(200, { 'Content-Type': 'application/json',
         'Access-Control-Allow-Origin' : '*' });
+    var queryData = url.parse(request.url, true).query;
+    var search = queryData.q || "firefox";
 
-    client.get("search/tweets", {q: "firefox"}, function (error, tweets) {
+    client.get("search/tweets", {q: search}, function (error, tweets) {
         if (error) {
             response.end("{ err: 'An error happened'}");
         } else {
