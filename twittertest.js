@@ -13,8 +13,8 @@ http.createServer(function(request, response) {
     response.writeHead(200, {'Content-Type': 'text/plain'});
 
     client.get("search/tweets", {q: ""}, function (error, tweets) {
-        if (err) {
-            response.end("An error happened while trying to fetch tweets: " +err);
+        if (error) {
+            response.end("An error happened while trying to fetch tweets: " +error);
         } else {
             console.log(tweets);
             response.end("Looks like it worked");
