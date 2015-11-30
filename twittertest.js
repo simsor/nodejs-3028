@@ -17,7 +17,12 @@ http.createServer(function(request, response) {
         if (error) {
             response.end("{ err: 'An error happened'}");
         } else {
-            response.end(JSON.stringify(tweets));
+            var json = [];
+            for(var i=0; i < tweets.statuses.length; i++) {
+                json.push({name: tweet.statuses[i].user.name, text: tweet.statuses[i].text});
+            }
+
+            response.end(JSON.stringify(json));
         }
     });
 
