@@ -19,7 +19,7 @@ http.createServer(function(request, response) {
         } else {
             var json = [];
             for(var i=0; i < tweets.statuses.length; i++) {
-                json.push({name: tweets.statuses[i].user.name, text: tweets.statuses[i].text});
+                json.push({name: tweets.statuses[i].user.name, text: tweets.statuses[i].text, handle: tweets.statuses[i].user.screen_name});
             }
 
             response.end(JSON.stringify(json));
