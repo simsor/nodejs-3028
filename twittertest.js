@@ -14,10 +14,9 @@ http.createServer(function(request, response) {
 
     client.get("search/tweets", {q: "firefox"}, function (error, tweets) {
         if (error) {
-            throw error;
+            response.end("{ err: 'An error happened'}");
         } else {
-            console.log(tweets);
-            response.end("Looks like it worked");
+            response.end(JSON.stringify(tweets));
         }
     });
 
